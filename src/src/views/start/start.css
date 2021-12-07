@@ -1,0 +1,19 @@
+.container-start {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-button {
+    background-color: #BF282E;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
