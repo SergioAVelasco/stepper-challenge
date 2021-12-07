@@ -1,16 +1,29 @@
 import React from "react";
 import "./layout.css";
 
-const TOTAL_STEPS = 4;
+const Layout = ({
+  children,
+  currentStep,
+  onNextClick,
+  onPrevClick,
+  totalSteps,
+}) => {
+  let prevClass = "button";
+  const nextButton = "button";
 
-const Layout = ({ children, currentStep }) => {
+  if (currentStep === 1) {
+    prevClass = prevClass + " disabled-button";
+  }
+  
   return (
     <div className="container">
-      <Header currentStep={currentStep} />
+      <Header currentStep={currentStep} totalSteps={totalSteps} />
       <div className="main-content">{children}</div>
       <div className="buttons-container">
-        <button>Anterior</button>
-        <button>Siguiente</button>
+        <button className={prevClass}  onClick={onPrevClick}>Back</button>
+        <button className={nextButton} onClick={onNextClick}>
+          {currentStep === totalSteps ? "Send" : "Next"}
+        </button>
       </div>
     </div>
   );
@@ -18,17 +31,19 @@ const Layout = ({ children, currentStep }) => {
 
 export default Layout;
 
-const Header = ({ currentStep }) => {
+const Header = ({ currentStep, totalSteps }) => {
   const steps = [];
 
-  for (let i = 1; i < TOTAL_STEPS + 1; i++) {
+  for (let i = 1; i < totalSteps + 1; i++) {
     let stepClass = "single-step";
     if (currentStep === i) {
       stepClass = stepClass + " step-active";
     } else if (currentStep > i) {
       stepClass = stepClass + " step-past";
     }
-    steps.push(<div className={stepClass}>{`Step ${i}`}</div>);
+    steps.push(
+      <div key={`step-${i}`} className={stepClass}>{`Step ${i}`}</div>
+    );
   }
   return <div className="steps-container">{steps}</div>;
 };

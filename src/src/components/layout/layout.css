@@ -7,6 +7,9 @@
 
 .main-content {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttons-container {
@@ -14,8 +17,25 @@
   justify-content: space-between;
 }
 
+.button {
+    background-color: #BF282E;
+    color: white; 
+    margin: 20px;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    min-width: 120px;
+}
+
+.disabled-button {
+    background-color: grey;
+    cursor: default;
+}
+
 .steps-container {
   display: flex;
+  border: 1px solid black;
 }
 
 .single-step {
@@ -23,13 +43,18 @@
   color: white;
   padding: 15px;
   min-width: 200px;
+  border: 1px solid  transparent;
+  padding-left: 20px;
 }
 
 .step-active {
-  background-color: red;
+  background-color: #BF282E;  
+  border: 1px solid  transparent;
 }
 
 .step-past {
   background-color: white;
-  color: black;
+  color: rgb(42, 175, 120);
+  font-weight: bold;
+  border: 1px solid  black;
 }
